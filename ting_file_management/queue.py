@@ -6,6 +6,9 @@ class Queue:
     def __len__(self):
         return self._len
 
+    def __iter__(self):
+        return iter(self._data)
+
     def is_empty(self):
         return not self._len
 
