@@ -1,9 +1,16 @@
+from double_node import DoublyNode
+
+
 class Queue:
     def __init__(self):
-        """Inicialize sua estrutura aqui"""
+        self.head = DoublyNode("HEAD")
+        self.tail = DoublyNode("TAIL")
+        self.head.next = self.tail
+        self.tail.previous = self.head
+        self.__length = 0
 
     def __len__(self):
-        """Aqui irá sua implementação"""
+        return self.__length
 
     def enqueue(self, value):
         """Aqui irá sua implementação"""
