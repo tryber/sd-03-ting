@@ -47,6 +47,9 @@ class Queue:
 
         return value_returned
 
+    def is_empty(self):
+        return not self.__length
+
 
 if __name__ == "__main__":
     queue = Queue()
