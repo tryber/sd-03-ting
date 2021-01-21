@@ -1,15 +1,18 @@
+from deque import Deque
+
+
 class Queue:
     def __init__(self):
-        """Inicialize sua estrutura aqui"""
+        self._deque = Deque()
 
     def __len__(self):
-        """Aqui irá sua implementação"""
+        return len(self._deque)
 
     def enqueue(self, value):
-        """Aqui irá sua implementação"""
+        self._deque.push_back(value)
 
     def dequeue(self):
-        """Aqui irá sua implementação"""
+        return self._deque.pop_front()
 
     def search(self, index):
         """Aqui irá sua implementação"""
