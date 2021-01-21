@@ -1,18 +1,18 @@
-from deque_project import Deque
-
-
 class Queue:
+    FIRST_ELEMENT = 0
+
     def __init__(self):
-        self._deque = Deque()
+        self._data = []
 
     def __len__(self):
-        return len(self._deque)
+        return len(self._data)
 
     def enqueue(self, value):
-        self._deque.push_back(value)
+        self._data.insert(self.FIRST_ELEMENT, value)
 
     def dequeue(self):
-        return self._deque.pop_front()
+        if self._data:
+            return self._data.pop(self.FIRST_ELEMENT)
 
     def search(self, index):
         """Aqui irá sua implementação"""
