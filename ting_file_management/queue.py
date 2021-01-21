@@ -25,12 +25,12 @@ class Queue:
 
     def dequeue(self):
         value_to_be_removed = None
-        if not self.is_empty():    
-            value_to_be_removed = self.head.next                        # passo 1
-            element_later_than_removed = value_to_be_removed.next       # passo 2.2
-            self.head.next = element_later_than_removed                 # passo 3.1
-            element_later_than_removed.previous = self.head             # passo 3.2
-            # value_to_be_removed.reset()                                # passo 4
+        if not self.is_empty():
+            value_to_be_removed = self.head.next                   # passo 1
+            element_later_than_removed = value_to_be_removed.next  # passo 2.2
+            self.head.next = element_later_than_removed            # passo 3.1
+            element_later_than_removed.previous = self.head        # passo 3.2
+            # value_to_be_removed.reset()                           # passo 4
             self.__length -= 1
         return value_to_be_removed.value
 
