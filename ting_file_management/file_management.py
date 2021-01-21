@@ -1,10 +1,15 @@
 def process_file(file):
-    """sua funcao aqui"""
+    qtd_rows = 0
+    for row in file:
+        print(row)
+        qtd_rows = len(row)
+
+    return qtd_rows
 
 
 def txt_importer(path_file):
     if not path_file.endswith('.txt'):
-        return ValueError("Formato inválido\n")
+        return print("Formato inválido\n")
     try:
         with open(path_file, "r") as file:
             process_file(file)
