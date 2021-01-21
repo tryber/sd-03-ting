@@ -1,4 +1,4 @@
-from deque import Deque
+from deque_project import Deque
 
 
 class Queue:
