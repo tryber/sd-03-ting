@@ -12,7 +12,7 @@ class Queue:
 
     def dequeue(self):
         if self._data:
-            return self._data.pop(self.FIRST_ELEMENT)
+            return self._data.pop()
 
     def search(self, index):
         """Aqui irá sua implementação"""
