@@ -1,15 +1,59 @@
+from ting_file_management.doubly_node import DoublyNode
+
+
 class Queue:
     def __init__(self):
-        """Inicialize sua estrutura aqui"""
+        self.head = DoublyNode("HEAD")
+        self.tail = DoublyNode("TAIL")
+        self.head.next = self.tail
+        self.tail.previous = self.head
+        self.__length = 0
 
     def __len__(self):
-        """Aqui irá sua implementação"""
+        return self.__length
+
+    def __str__(self):
+        return f"Queue(len={self.__length} value={self.head})"
 
     def enqueue(self, value):
-        """Aqui irá sua implementação"""
+        node_value = DoublyNode(value)
+        node_value.previous = self.tail.previous
+        node_value.next = self.tail
+        self.tail.previous.next = node_value
+        self.tail.previous = node_value
+        self.__length += 1
 
     def dequeue(self):
-        """Aqui irá sua implementação"""
+        value_to_be_removed = self.head.next.value
+        self.head.next = self.head.next.next
+        self.head.next.previous = self.head
+        self.__length -= 1
+        return value_to_be_removed
 
     def search(self, index):
-        """Aqui irá sua implementação"""
+        if index < 0 or index >= self.__length:
+            raise IndexError("Index fora do range")
+
+        value_returned = None
+        value_to_be_returned = self.head.next
+
+        if value_to_be_returned:
+            while index > 0 and value_to_be_returned.next:
+                value_to_be_returned = value_to_be_returned.next
+                index -= 1
+
+            if value_to_be_returned:
+                value_returned = value_to_be_returned.value
+
+        return value_returned
+
+
+if __name__ == "__main__":
+    queue = Queue()
+    queue.enqueue(1)
+    # queue.enqueue(2)
+    # queue.enqueue(3)
+    # queue.enqueue(4)
+    # queue.dequeue()
+    print(queue.search(0))
+    # print(queue)
