@@ -1,6 +1,19 @@
 from ting_file_management.doubly_node import DoublyNode
 
 
+class DoublyLinkedListIterator:
+    def __init__(self, iterable):
+
+        self.iterable = iterable
+
+    def __next__(self):
+        if self.iterable.next.next is None:
+            raise StopIteration()
+
+        self.iterable = self.iterable.next
+        return self.iterable
+
+
 class Queue:
     def __init__(self):
         self.head = DoublyNode("HEAD")
@@ -8,6 +21,9 @@ class Queue:
         self.head.next = self.tail
         self.tail.previous = self.head
         self.__length = 0
+
+    def __iter__(self):
+        return DoublyLinkedListIterator(self.head)
 
     def __len__(self):
         return self.__length
@@ -54,9 +70,9 @@ class Queue:
 if __name__ == "__main__":
     queue = Queue()
     queue.enqueue(1)
-    # queue.enqueue(2)
-    # queue.enqueue(3)
+    queue.enqueue(2)
+    queue.enqueue(3)
     # queue.enqueue(4)
     # queue.dequeue()
-    print(queue.search(0))
+    # print(queue.search(0))
     # print(queue)
