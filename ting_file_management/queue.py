@@ -5,7 +5,7 @@ class Queue:
         self._data = []
 
     def __len__(self):
-        return self.FIRST_ELEMENT
+        return len(self._data)
 
     def enqueue(self, value):
         self._data.insert(self.FIRST_ELEMENT, value)
@@ -15,4 +15,5 @@ class Queue:
             return self._data.pop()
 
     def search(self, index):
-        """codigo"""
+        if index >= len(self._data) or index < 0:
+            raise IndexError
