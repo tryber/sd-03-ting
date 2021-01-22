@@ -13,7 +13,7 @@ def exists_word(word, instance):
         }
 
         for index, line in enumerate(lines):
-            line_replaced = line.replace('.', '')
+            line_replaced = line.replace(".", "")
             lines_split = line_replaced.split()
             if word in lines_split:
                 word_dict["ocorrencias"].append({"linha": index + 1})
@@ -35,11 +35,13 @@ def search_by_word(word, instance):
         }
 
         for index, line in enumerate(lines):
-            line_replaced = line.replace('.', '')
+            line_replaced = line.replace(".", "")
             line_to_lower_case = line_replaced.lower()
             lines_split = line_to_lower_case.split()
             if word.lower() in lines_split:
-                word_dict["ocorrencias"].append({"linha": index + 1, "conteudo": line})
+                word_dict["ocorrencias"].append(
+                    {"linha": index + 1, "conteudo": line}
+                )
 
         if len(word_dict["ocorrencias"]) > 0:
             array_of_string_indexed.append(word_dict)
