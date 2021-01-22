@@ -5,7 +5,7 @@ class Queue:
         self._data = []
 
     def __len__(self):
-        return len(self._data)
+        return self.FIRST_ELEMENT
 
     def enqueue(self, value):
         self._data.insert(self.FIRST_ELEMENT, value)
@@ -15,4 +15,4 @@ class Queue:
             return self._data.pop()
 
     def search(self, index):
-        """Aqui irá sua implementação"""
+        """codigo"""
