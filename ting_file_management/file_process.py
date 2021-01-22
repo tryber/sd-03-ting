@@ -6,6 +6,13 @@ def process(path_file, instance):
     lines = list()
     result = dict()
 
+    # verifica se o arquivo já existe na fila
+    for n in range(len(instance)):
+        check_list = instance.search(n)
+        if check_list["nome_do_arquivo"] == f"{path_file}":
+            return None
+
+    # se o arquivo nao existe, carregue-o
     lines = txt_importer(path_file)
     if lines is not None:
         result = {
