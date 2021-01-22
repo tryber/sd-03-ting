@@ -1,9 +1,8 @@
 import sys
 from ting_file_management.file_management import txt_importer
-from ting_file_management.queue import Queue
 
 
-def process(path_file, instance=Queue):
+def process(path_file, instance):
     lines = list()
     result = dict()
 
@@ -22,7 +21,7 @@ def process(path_file, instance=Queue):
     return instance.enqueue(result)
 
 
-def remove(instance=Queue):
+def remove(instance):
     if instance.is_empty():
         sys.stdout.write("Não há elementos\n")
     else:
@@ -34,4 +33,8 @@ def remove(instance=Queue):
 
 
 def file_metadata(instance, position):
-    """Aqui irá sua implementação"""
+    if position < 0 or position > len(instance):
+        sys.stderr.write("Posição inválida")
+        return None
+    result = instance.search(position)
+    sys.stdout.write(f"{result}")
