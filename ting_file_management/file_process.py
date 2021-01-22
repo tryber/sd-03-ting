@@ -22,10 +22,12 @@ def process(path_file, instance):
         }
     else:
         return None
+
+    # coloque o arquivo na fila e imprima as informacoes
+    instance.enqueue(result)
     sys.stdout.write(f"'nome_do_arquivo': '{path_file}'")
     sys.stdout.write(f"'qtd_linhas': {len(lines)}")
     sys.stdout.write(f"'linhas_do_arquivo': {lines}")
-    return instance.enqueue(result)
 
 
 def remove(instance):
@@ -33,7 +35,6 @@ def remove(instance):
         sys.stdout.write("Não há elementos\n")
     else:
         result = instance.dequeue()
-        # print(result["nome_do_arquivo"])
         sys.stdout.write(
             f"Arquivo {result['nome_do_arquivo']} removido com sucesso\n"
         )
