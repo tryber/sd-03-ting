@@ -16,11 +16,6 @@ class Queue:
         return self.items.pop()
 
     def search(self, index):
-        result = []
-        try:
-            result.append(self.items[index + len(self.items) - 1])
-        except IndexError:
-            index
-        except ValueError:
-            index
-        return result
+        if index < 0 or index >= len(self.items):
+            raise IndexError("Index fora do range")
+        pass
