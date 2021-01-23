@@ -18,5 +18,6 @@ class Queue:
     def search(self, index):
         if index < 0 or index >= len(self.items):
             raise IndexError("Index fora do range")
+        # https://stackoverflow.com/questions/3940128/how-can-i-reverse-a-list-in-python
         revArray = self.items[::-1]
         return revArray[index]
