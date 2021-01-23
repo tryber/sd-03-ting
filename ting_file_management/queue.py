@@ -18,4 +18,5 @@ class Queue:
     def search(self, index):
         if index < 0 or index >= len(self.items):
             raise IndexError("Index fora do range")
-        pass
+        revArray = self.items[::-1]
+        return revArray[index]
