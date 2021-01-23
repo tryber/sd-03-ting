@@ -1,4 +1,5 @@
 class Queue:
+    # initial commit
     def __init__(self):
         """Inicialize sua estrutura aqui"""
 
