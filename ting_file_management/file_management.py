@@ -8,7 +8,9 @@ def txt_importer(path_file):
     merged = ""
     file_content = []
     if not os.path.exists(path_file):
-        return sys.stderr.write("Arquivo statics/arquivo_nao_existe.txt não encontrado\n")   
+        return sys.stderr.write("Arquivo statics/arquivo_nao_existe.txt"
+                                + " não encontrado\n"
+                                ) 
     elif not path_file.endswith("txt"):
         return sys.stderr.write("Formato inválido\n")
     else:
