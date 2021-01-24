@@ -1,6 +1,7 @@
 from ting_file_management.file_management import txt_importer
 import sys
 
+
 def process(path_file, instance):
     file_content = txt_importer(path_file)
     for each_queue in range(len(instance)):
