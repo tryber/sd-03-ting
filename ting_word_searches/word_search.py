@@ -1,12 +1,16 @@
 def exists_word(word, instance):
     """Aqui irá sua implementação"""
-    word_news = []
-    for i in instance:
-        find_word = instance.search(word)
-        if find_word[i]:
-            return word_news.append(find_word)
-        else:
+    n_list = []
+    seach_word = instance.search()
+    for i in range(len(instance)):
+        if word != seach_word(["nome_do_arquivo"]):
             return ''
+        else:
+            n_list.append({
+                "palavra": f"{word}",
+                "arquivo": seach_word["nome_do_arquivo"],
+                "ocorrencias": instance,
+            })
 
 
 def search_by_word(word, instance):
