@@ -1,3 +1,6 @@
+import sys
+
+
 def txt_importer(path_file):
     """Aqui irá sua implementação"""
     try:
@@ -8,4 +11,4 @@ def txt_importer(path_file):
             return [new.strip() for new in news]
 
     except FileNotFoundError:
-        print(f"Arquivo {path_file} não encontrado")
+        print(f"Arquivo {path_file} não encontrado", file_news=sys.stderr)

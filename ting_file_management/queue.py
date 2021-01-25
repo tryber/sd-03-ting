@@ -1,9 +1,9 @@
 class Queue:
-    f_elem = 0
+    FIRST_ELEMENT = 0
 
     def __init__(self):
         """Inicialize sua estrutura aqui"""
-        self._data = ()
+        self._data = []
 
     def __len__(self):
         """Aqui irá sua implementação"""
@@ -11,11 +11,12 @@ class Queue:
 
     def enqueue(self, value):
         """Aqui irá sua implementação"""
-        self._data.insert(self.f_elem.value)
+        self._data.insert(self.FIRST_ELEMENT, value)
 
     def dequeue(self):
         """Aqui irá sua implementação"""
-        return self._data.pop()
+        if self._data:
+            return self._data.pop()
 
     def search(self, index):
         """Aqui irá sua implementação"""
