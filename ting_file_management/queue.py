@@ -3,17 +3,22 @@ class Queue:
 
     def __init__(self):
         self._data = []
+        self._len = 0
 
     def __len__(self):
-        return len(self._data)
+        return self._len
 
     def enqueue(self, value):
-        self._data.insert(self.FIRST_ELEMENT, value)
+        self._data.append(value)
+        self._len += 1
 
     def dequeue(self):
-        if self._data:
-            return self._data.pop()
+        if not self._len:
+            remove = self._data.pop()
+            self._len -= 1
+            return remove
 
     def search(self, index):
-        if index >= len(self._data) or index < 0:
-            raise IndexError
+        if self._len >= index >= 0:
+            return self._data[index]
+        raise IndexError
