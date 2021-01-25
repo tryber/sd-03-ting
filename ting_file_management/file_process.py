@@ -1,5 +1,4 @@
 import sys
-from ting_file_management.queue import Queue
 from ting_file_management.file_management import txt_importer
 
 
@@ -11,7 +10,7 @@ def process(path_file, instance):
         "qtd_linhas": len(file_lines),
         "linhas_do_arquivo": file_lines,
     }
-    Queue.enqueue(data)
+    instance.enqueue(data)
     sys.stdout.write(f"{data}\n")
     return data
 
@@ -19,7 +18,7 @@ def process(path_file, instance):
 def remove(instance):
     """Aqui irá sua implementação"""
     if len(instance) > 0:
-        remove_news = Queue.dequeue()
+        remove_news = instance.dequeue()
         name = remove_news["nome_do_arquivo"]
         return print(f"Arquivo {name} removido com sucesso", file=sys.stdout)
 
@@ -29,7 +28,7 @@ def remove(instance):
 def file_metadata(instance, position):
     """Aqui irá sua implementação"""
     try:
-        file_meta = Queue.search(position)
+        file_meta = instance.search(position)
         sys.stdout.write(f"{file_meta}\n")
         return
     except IndexError:
