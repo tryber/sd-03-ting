@@ -14,15 +14,15 @@ def process(path_file, instance):
 
 def remove(instance):
     if not instance:
-        return print("Não há elementos")
+        return print("Não há elementos", file=sys.stdout)
     path_file = instance.search(0)["nome_do_arquivo"]
     instance.dequeue()
-    return print(f"Arquivo {path_file} removido com sucesso")
+    print(f"Arquivo {path_file} removido com sucesso", file=sys.stdout)
 
 
 def file_metadata(instance, position):
     try:
         data = instance.search(position)
-        print(data)
+        print(data, file=sys.stdout)
     except IndexError:
         print("Posição inválida", file=sys.stderr)
