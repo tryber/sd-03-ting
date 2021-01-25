@@ -1,22 +1,26 @@
+import re
+
+
 def exists_word(word, instance):
     new_list = []
+    count = 0
 
-    for node in instance:
-        lines = node.value["linhas_do_arquivo"]
-        new_dict = {
-            "palavra": word,
-            "arquivo": node.value["nome_do_arquivo"],
-            "ocorrencias": [],
-        }
+    for i in range(len(instance)):
+        count += 1
+        occurrence = []
 
-        for i, line in enumerate(lines):
-            line_change = line.replace(".", "")
-            line_split = line_change.split()
-            if word in line_split:
-                new_dict["ocorrencias"].append({"linha": i + 1})
-
-        if len(new_dict["ocorrencias"]) > 0:
-            new_list.append(new_dict)
+        new_search = instance.search(i)
+        for line in new_search["linhas_do_arquivo"]:
+            if re.search(word, line, re.IGNORECASE):
+                occurrence.append({
+                    "linha": count,
+                })
+                print(count)
+                new_list.append({
+                    "palavra": f"{word}",
+                    "arquivo": new_search["nome_do_arquivo"],
+                    "ocorrencias": occurrence,
+                })
 
     return new_list
 
