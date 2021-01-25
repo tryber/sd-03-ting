@@ -20,5 +20,7 @@ class Queue:
 
     def search(self, index):
         """Aqui irá sua implementação"""
-        if index >= len(self._data) or index < 0:
+        if index >= len(self._data) or index > 0:
+            return self._data[index]
+        else:
             raise IndexError
