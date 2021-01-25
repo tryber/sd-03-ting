@@ -14,9 +14,11 @@ class Queue:
 
     def dequeue(self):
         if not self._len:
-            remove = self._data.pop()
-            self._len -= 1
-            return remove
+            return None
+
+        remove = self._data.pop()
+        self._len -= 1
+        return remove
 
     def search(self, index):
         if self._len >= index >= 0:
