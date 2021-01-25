@@ -11,4 +11,4 @@ def txt_importer(path_file):
             return [new.strip() for new in news]
 
     except FileNotFoundError:
-        print(f"Arquivo {path_file} não encontrado", file=sys.stderr)
+        return print(f"Arquivo {path_file} não encontrado", file=sys.stderr)

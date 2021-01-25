@@ -16,8 +16,13 @@ class Queue:
 
     def dequeue(self):
         """Aqui irá sua implementação"""
-        if self._data:
-            return self._data.pop()
+        if not self._len:
+            return None
+
+        dequeue_remove = self._data[0]
+        self._data.pop()
+        self._len -= 1
+        return dequeue_remove
 
     def search(self, index):
         """Aqui irá sua implementação"""
