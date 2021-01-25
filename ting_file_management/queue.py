@@ -1,4 +1,5 @@
 class Queue:
+    f_elem = 0
 
     def __init__(self):
         """Inicialize sua estrutura aqui"""
@@ -10,7 +11,7 @@ class Queue:
 
     def enqueue(self, value):
         """Aqui irá sua implementação"""
-        self._data.insert(value)
+        self._data.insert(self.f_elem.value)
 
     def dequeue(self):
         """Aqui irá sua implementação"""
@@ -18,11 +19,5 @@ class Queue:
 
     def search(self, index):
         """Aqui irá sua implementação"""
-        try:
-            if index <= 0 or len(self._data) <= -1:
-                return None
-        except IndexError:
-            return "indice invalido"
-        else:
-            for i in index:
-                return index[i]
+        if index >= len(self._data) or index < 0:
+            raise IndexError
