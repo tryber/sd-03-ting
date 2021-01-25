@@ -16,7 +16,8 @@ class Queue:
         if not self._len:
             return None
 
-        remove = self._data.pop()
+        remove = self._data[0]
+        self._data.pop()
         self._len -= 1
         return remove
 
