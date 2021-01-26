@@ -11,7 +11,7 @@ def exists_word(word, instance):
         for j in instance.search(i)['linhas_do_arquivo']:
             if j.lower().find(word.lower()) >= 0:
                 occurrences.append({
-                    'linha': i,
+                    'linha': i + 1,
                 })
                 foundFilePath = instance.search(i)['nome_do_arquivo']
         if occurrences != []:
@@ -34,7 +34,7 @@ def search_by_word(word, instance):
         for j in instance.search(i)['linhas_do_arquivo']:
             if j.lower().find(word.lower()) >= 0:
                 occurrences.append({
-                    'linha': i,
+                    'linha': i + 1,
                     'conteudo': j
                 })
                 foundFilePath = instance.search(i)['nome_do_arquivo']
@@ -51,10 +51,7 @@ def search_by_word(word, instance):
 
 if __name__ == '__main__':
     filinha = Queue()
-    process('../statics/arquivo_teste.txt', filinha)
     process('../statics/nome_pedro.txt', filinha)
-    process('../statics/test1.txt', filinha)
-    process('../statics/test2.txt', filinha)
     print('\n\n\n')
-    print(exists_word('de', filinha))
+    print(exists_word('pedro', filinha))
     print(search_by_word('pedro', filinha))
