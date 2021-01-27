@@ -7,7 +7,7 @@ class Queue:
 
     def enqueue(self, value):
         return self._list.append(value)
-    
+
     def dequeue(self):
         return self._list.pop(0)
 
