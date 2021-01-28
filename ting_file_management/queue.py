@@ -16,3 +16,8 @@ class Queue:
             raise IndexError()
         else:
             return self._list[index]
+
+    def verify_if_exists(self, value):
+        if value in self._list:
+            return True
+        return False
