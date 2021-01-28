@@ -38,4 +38,4 @@ def file_metadata(instance, position):
             pre_process(file['nome_do_arquivo'],
                         file['linhas_do_arquivo']), file=sys.stdout)
     except IndexError:
-        return print('Posição inválida', file=sys.stdout)
+        print("Posição inválida", file=sys.stderr)
