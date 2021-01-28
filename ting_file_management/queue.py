@@ -37,7 +37,7 @@ class Queue:
             occurrence = []
             for line in entry['linhas_do_arquivo']:
                 if word.lower() in line.lower():
-                    occurrence.append({"linha": 1})
+                    occurrence.append({"linha": index})
                 index += 1
             if occurrence == []:
                 return occurrence
@@ -56,7 +56,7 @@ class Queue:
             occurrence = []
             for line in entry['linhas_do_arquivo']:
                 if word.lower() in line.lower():
-                    occurrence.append({"linha": 1, "conteudo": line})
+                    occurrence.append({"linha": index, "conteudo": line})
                 index += 1
             if occurrence == []:
                 return occurrence
