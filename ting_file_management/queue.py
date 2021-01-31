@@ -40,6 +40,7 @@ class Queue:
             element_later_than_removed = value_to_be_removed.next
             self.head.next = element_later_than_removed
             element_later_than_removed.previous = self.head
+            value_to_be_removed.reset()
             self.__length -= 1
         return value_to_be_removed.value
 
