@@ -55,6 +55,8 @@ class Queue:
     def search(self, index):
         """Aqui irá sua implementação"""
         value_returned = None
+        if index > self.__length - 1 or index < 0:
+            raise IndexError
         value_to_be_returned = self.__get_node_at(index)
         if value_to_be_returned:
             value_returned = DoublyNode(value_to_be_returned.value)
