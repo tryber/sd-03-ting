@@ -32,7 +32,6 @@ def search_by_word(word, instance):
             if re.findall(word, phrase, re.IGNORECASE):
                 line += 1
                 occurrences.append({"linha": line, "conteudo": phrase})
-                print(occurrences)
         if len(occurrences):
             result.append(
                 {
