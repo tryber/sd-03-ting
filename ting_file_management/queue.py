@@ -3,6 +3,7 @@ class Queue:
 
     def __init__(self):
         self._data = list()
+        self._files = list()
 
     def __len__(self):
         return len(self._data)
@@ -19,3 +20,9 @@ class Queue:
         if self._data and self._data[index]:
             return self._data[index]
         raise IndexError
+
+    def add_file(self, file):
+        self._files.append(file)
+
+    def remove_file(self, file):
+        self._files.remove(file)
