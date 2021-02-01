@@ -34,7 +34,7 @@ def test_search_com_indice_invalido():
     queue = Queue()
     with pytest.raises(IndexError):
         queue.search(0)
-    queue.enqueue(42)
+        queue.enqueue(42)
     with pytest.raises(IndexError):
         queue.search(-1)
     with pytest.raises(IndexError):
