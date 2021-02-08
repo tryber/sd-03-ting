@@ -1,4 +1,4 @@
-  def extract_word_occurrence_from_file(word, file, content=None):
+def extract_word_occurrence_from_file(word, file, content=None):
     holder = {
         "palavra": word,
         "arquivo": file["nome_do_arquivo"],
