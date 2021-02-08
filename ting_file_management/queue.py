@@ -31,3 +31,4 @@ class Queue(Iterable):
             raise IndexError
         node = self.__data.get_by_index(index)
         return node and node.value
+    
