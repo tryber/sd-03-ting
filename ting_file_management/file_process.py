@@ -33,3 +33,4 @@ def file_metadata(instance, position):
         print("Posição inválida", file=sys.stderr)
     else:
         return instance.search(position)
+    
