@@ -10,10 +10,11 @@ def txt_importer(path_file):
             for line in file:
                 text += line
             text = text.split("\n")
-            print(text)
-        return text
     except FileNotFoundError:
         sys.stderr.write(f"Arquivo {path_file} não encontrado\n")
+    else:
+        return text
+
 
 
 if __name__ == "__main__":
