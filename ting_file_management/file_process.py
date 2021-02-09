@@ -7,7 +7,6 @@ from ting_file_management.file_management import txt_importer
 @cache
 def process(path_file, instance):
     value = txt_importer(path_file)
-
     data = {
         "nome_do_arquivo": path_file,
         "qtd_linhas": len(value),
