@@ -1,3 +1,24 @@
+class Node:
+    def __init__(self, value, next=None, prev=None):
+        self.value = value
+        self.prev = prev
+        self.next = next
+
+    def __str__(self):
+        return f"{self.value}"
+
+    def __repr__(self):
+        return f"Node({self.value}, {self.next})"
+
+    def reset(self):
+        self.prev = None
+        self.next = None
+
+    def connect(self, other):
+        self.next = other
+        other.prev = self
+
+
 class Queue:
     def __init__(self):
         self.head = Node("HEAD", prev=None)
@@ -39,27 +60,6 @@ class Queue:
         to_remove.reset()
         self.__length -= 1
         return to_remove.value
-
-
-class Node:
-    def __init__(self, value, next=None, prev=None):
-        self.value = value
-        self.prev = prev
-        self.next = next
-
-    def __str__(self):
-        return f"{self.value}"
-
-    def __repr__(self):
-        return f"Node({self.value}, {self.next})"
-
-    def reset(self):
-        self.prev = None
-        self.next = None
-
-    def connect(self, other):
-        self.next = other
-        other.prev = self
 
 
 if __name__ == "__main__":
