@@ -1,6 +1,5 @@
 # from .content_deque import Deque
 from operator import itemgetter
-import sys
 # sys.path.insert(1, '../ting_file_management')
 # from file_process import process
 # from file_management import txt_importer
@@ -16,6 +15,7 @@ def phrase_to_words(phrase):
     phrase = phrase.split(" ")
     return phrase
 
+
 def exists_word(word, instance):
     result = list()
     for i in range(len(instance)):
@@ -28,7 +28,7 @@ def exists_word(word, instance):
             )(process_metada)
 
             words = [
-                { "linha": index + 1 }
+                {"linha": index + 1}
                 for index, phrase in enumerate(data)
                 if word in phrase_to_words(phrase)
             ]

@@ -1,6 +1,7 @@
 import re
 import sys
 
+
 def txt_importer(path_file):
     try:
         if not re.search('.txt$', path_file):
@@ -14,7 +15,6 @@ def txt_importer(path_file):
         sys.stderr.write(f"Arquivo {path_file} não encontrado\n")
     else:
         return text
-
 
 
 if __name__ == "__main__":

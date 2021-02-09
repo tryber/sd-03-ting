@@ -1,4 +1,4 @@
-from .file_management import txt_importer
+from file_management import txt_importer
 from queue import Queue
 import sys
 from operator import itemgetter
@@ -30,18 +30,17 @@ def process(path_file, instance):
 
     sys.stdout.write(stdout_return)
 
+
 def remove(instance):
     try:
-        path_file = instance.dequeue()["nome_do_arquivo"]
+        path_file = instance.dequeue()
+        path_file = path_file["nome_do_arquivo"]
         for i in range(len(instance)):
-            if instance.search(i):
-                item = instance.search(i)
-                item = item["nome_do_arquivo"]
-                if item and item == path_file:
-                    del item
+            item = instance.search(i)
+            item = item["nome_do_arquivo"]
+            if item == path_file:
+                del item
         sys.stdout.write(f"Arquivo {path_file} removido com sucesso\n")
-        if not path_file:
-            raise IndexError
     except IndexError:
         sys.stdout.write("Não há elementos\n")
 
@@ -67,9 +66,8 @@ def file_metadata(instance, position):
         sys.stderr.write("Posição inválida")
 
     else:
-        print(f"Saida file metadata:\n")
+        print("Saida file metadata:\n")
         sys.stdout.write(stdout_return)
-
 
 
 if __name__ == "__main__":
