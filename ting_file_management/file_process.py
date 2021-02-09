@@ -1,8 +1,10 @@
 import sys
+from functools import cache
 from ting_file_management.file_management import txt_importer
 
 
 # Implementa arquivo no fila
+@cache
 def process(path_file, instance):
     for element in range(len(instance)):
         if instance.search(element)["nome_do_arquivo"] == path_file:
