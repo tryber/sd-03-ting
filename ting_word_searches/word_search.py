@@ -3,10 +3,10 @@ from operator import itemgetter
 
 def phrase_to_words(phrase):
     special_chars = "*/-+.;/,:~^][{}()´`-_=+!@#$%¨&|\\"
-    phrase = "".join(str(x).lower() for x in phrase)
-    for letter in phrase:
-        if letter in special_chars:
-            phrase = phrase.replace(letter, "")
+    phrase = "".join(str(char).lower() for char in phrase)
+    for char in phrase:
+        if char in special_chars:
+            phrase = phrase.replace(char, "")
     phrase = phrase.split(" ")
     return phrase
 
@@ -14,12 +14,12 @@ def phrase_to_words(phrase):
 def exists_word(word, instance):
     result = list()
     for i in range(len(instance)):
-        process_metada = instance.search(i)
+        metadata = instance.search(i)
         file_path, lines_qty, phrases = itemgetter(
             "nome_do_arquivo",
             "qtd_linhas",
             "linhas_do_arquivo"
-        )(process_metada)
+        )(metadata)
 
         match_ocurrences = [
             {"linha": index + 1}
@@ -27,7 +27,7 @@ def exists_word(word, instance):
             if str(word).lower() in phrase_to_words(phrase)
         ]
 
-        if len(match_ocurrences) == 0:
+        if not match_ocurrences:
             break
 
         result.append({
@@ -42,12 +42,12 @@ def exists_word(word, instance):
 def search_by_word(word, instance):
     result = list()
     for i in range(len(instance)):
-        process_metada = instance.search(i)
+        metadata = instance.search(i)
         file_path, lines_qty, phrases = itemgetter(
             "nome_do_arquivo",
             "qtd_linhas",
             "linhas_do_arquivo"
-        )(process_metada)
+        )(metadata)
 
         match_ocurrences = [
             {"linha": index + 1, "conteudo": phrase}
@@ -55,7 +55,7 @@ def search_by_word(word, instance):
             if word in phrase_to_words(phrase)
         ]
 
-        if len(match_ocurrences) == 0:
+        if not match_ocurrences:
             break
 
         result.append({
