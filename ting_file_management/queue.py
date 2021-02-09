@@ -6,10 +6,10 @@ class Node:
         self.next = next
 
     def __str__(self):
-        return f"{self.value}"
+        return f'{self.value}'
 
     def __repr__(self):
-        return f"Node({self.value}, {self.next})"
+        return f'Node({self.value}, {self.next})'
 
     def reset(self):
         self.prev = None
@@ -39,9 +39,9 @@ class Queue:
         return f"{message}]"
 
     def enqueue(self, value):
-        node = Node(value, prev=self.tail.prev, next=self.tail)
-        node.prev.next = node
-        self.tail.prev = node
+        jsNode = Node(value, prev=self.tail.prev, next=self.tail)
+        node.prev.next = jsNode
+        self.tail.prev = jsNode
         self.__length += 1
 
     def search(self, index):
@@ -56,11 +56,11 @@ class Queue:
     def dequeue(self):
         if len(self) == 0:
             return None
-        to_remove = self.head.next
-        self.head.connect(to_remove.next)
-        to_remove.reset()
+        remove = self.head.next
+        self.head.connect(remove.next)
+        remove.reset()
         self.__length -= 1
-        return to_remove.value
+        return remove.value
 
 
 if __name__ == "__main__":
