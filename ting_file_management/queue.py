@@ -40,7 +40,7 @@ class Queue:
 
     def enqueue(self, value):
         jsNode = Node(value, prev=self.tail.prev, next=self.tail)
-        node.prev.next = jsNode
+        jsNode.prev.next = jsNode
         self.tail.prev = jsNode
         self.__length += 1
 
