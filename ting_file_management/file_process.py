@@ -1,72 +1,33 @@
-class Queue:
-    # Implementa a fila na lista.
-    def __init__(self):
-        self.tail = Node("TAIL", next=None, prev=self.head)
-        self.head = Node("HEAD", prev=None)
-        self.head.next = self.tail
-        self.__length = 0
-
-    def __str__(self):
-        current = self.head.next
-        message = f"[{current}"
-        while current is not self.tail:
-            message += f", {current.value}"
-            current = current.next
-        return f"{message}]"
-
-    def __len__(self):
-        return self.__length
-
-    def enqueue(self, value):
-        node = Node(value, prev=self.tail.prev, next=self.tail)
-        node.prev.next = node
-        self.tail.prev = node
-        self.__length += 1
-
-    def search(self, index):
-        if index >= self.__length or index < 0:
-            raise IndexError
-        current = self.head.next
-        while current != self.tail and index > 0:
-            current = current.next
-            index -= 1
-        return current.value
-
-    def dequeue(self):
-        if len(self) == 0:
-            return None
-        to_remove = self.head.next
-        self.head.connect(to_remove.next)
-        to_remove.reset()
-        self.__length -= 1
-        return to_remove.value
+import sys
+from functools import cache
+from ting_file_management.file_management import txt_importer
 
 
-class Node:
-    def __init__(self, data, next=None, prev=None):
-        self.data = data
-        self.prev = prev
-        self.next = next
-
-    def __repr__(self):
-        return f"Node({self.data}, {self.next})"
-
-    def __str__(self):
-        return f"{self.data}"
-
-    def reset(self):
-        self.prev = None
-        self.next = None
-
-    def connect(self, other):
-        self.next = other
-        other.prev = self
+# Implementa arquivo no fila
+@cache
+def process(path_file, instance):
+    values = txt_importer(path_file)
+    processed_data = {
+        "nome_do_arquivo": path_file,
+        "qtd_linhas": len(values),
+        "linhas_do_arquivo": values,
+    }
+    instance.enqueue(processed_data)
+    print(processed_data, file=sys.stdout)
+    return processed_data
 
 
-if __name__ == "__main__":
-    fila = Queue()
-    fila.enqueue(42)
-    fila.enqueue(43)
-    fila.enqueue(44)
-    valor = fila.search(0)
-    print(fila, valor)
+def remove(instance):
+    if not len(instance):
+        sys.stdout.write('Não há elementos\n')
+    news = instance.dequeue()
+    name_file = instance.dequeue()['nome_do_arquivo']
+    print(f'Arquivo {name_file} removido com sucesso')
+
+
+def file_metadata(instance, position):
+    try:
+        result = instance.search(position)
+        sys.stdout.write(str(result))
+    except IndexError:
+        sys.stderr.write('Posição inválida')
