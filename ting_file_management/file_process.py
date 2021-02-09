@@ -6,11 +6,11 @@ import sys
 # Implementa arquivo no fila
 @cache
 def process(path_file, instance):
-    value = txt_importer(path_file)
+    txt = txt_importer(path_file)
     data = {
         "nome_do_arquivo": path_file,
-        "qtd_linhas": len(value),
-        "linhas_do_arquivo": value,
+        "qtd_linhas": len(txt),
+        "linhas_do_arquivo": txt,
     }
     print(data, file=sys.stdout)
     instance.enqueue(data)

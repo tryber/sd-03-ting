@@ -1,8 +1,8 @@
-def search_word_sentence(searched_word, sentences):
+def procura_palavra(palavra, sentences):
     value1 = []
     for line_index, sentence in enumerate(sentences):
         for word in sentence.split(" "):
-            if word.lower().replace(".", "") == searched_word.lower():
+            if word.lower().replace(".", "") == palavra.lower():
                 value1.append(
                     {
                         "linha": line_index + 1,
@@ -13,27 +13,27 @@ def search_word_sentence(searched_word, sentences):
     return value1
 
 
-def search_new_word(searched_word, sentences):
+def search_new_word(palavra, sentences):
     value1 = []
     for line_index, sentence in enumerate(sentences):
         for word in sentence.split(" "):
-            if word.lower().replace(".", "") == searched_word.lower():
+            if word.lower().replace(".", "") == palavra.lower():
                 value1.append({"linha": line_index + 1})
 
     return value1
 
 
-def search_by_word(word, instance):
+def search_by_word(palavra, instance):
     value2 = []
     for i_news in range(len(instance)):
         lines_arquivo = instance.dequeue()
-        matched_lines = search_word_sentence(
-            word, lines_arquivo["linhas_do_arquivo"]
+        matched_lines = procura_palavra(
+            palavra, lines_arquivo["linhas_do_arquivo"]
         )
         if matched_lines:
             value2.append(
                 {
-                    "palavra": word,
+                    "palavra": palavra,
                     "arquivo": lines_arquivo["nome_do_arquivo"],
                     "ocorrencias": matched_lines,
                 }
@@ -43,15 +43,15 @@ def search_by_word(word, instance):
     return value2
 
 
-def exists_word(word, instance):
+def exists_word(palavra, instance):
     value2 = []
     for i_news in range(len(instance)):
         lines_arquivo = instance.dequeue()
-        verify = search_new_word(word, lines_arquivo["linhas_do_arquivo"])
+        verify = search_new_word(palavra, lines_arquivo["linhas_do_arquivo"])
         if verify:
             value2.append(
                 {
-                    "palavra": word,
+                    "palavra": palavra,
                     "arquivo": lines_arquivo["nome_do_arquivo"],
                     "ocorrencias": verify,
                 }
@@ -67,5 +67,5 @@ if __name__ == "__main__":
 
     project = Queue()
     process("statics/nome_pedro.txt", project)
-    word = search_by_word("pedro", project)
-    print(word)
+    palavra = search_by_word("pedro", project)
+    print(palavra)
