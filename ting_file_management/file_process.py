@@ -8,14 +8,14 @@ from ting_file_management.file_management import txt_importer
 def process(path_file, instance):
     value = txt_importer(path_file)
 
-    processed_data = {
+    data = {
         "nome_do_arquivo": path_file,
         "qtd_linhas": len(value),
         "linhas_do_arquivo": value,
     }
-    print(processed_data, file=sys.stdout)
-    instance.enqueue(processed_data)
-    return processed_data
+    print(data, file=sys.stdout)
+    instance.enqueue(data)
+    return data
 
 
 def remove(instance):
@@ -32,4 +32,4 @@ def file_metadata(instance, position):
     try:
         print(instance.search(position))
     except IndexError:
-        sys.stderr.write("Posição inválida")
+        sys.stderr.write('Posição inválida')
