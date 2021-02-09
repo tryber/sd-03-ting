@@ -1,24 +1,3 @@
-class Node:
-    def __init__(self, value, next=None, prev=None):
-        self.value = value
-        self.prev = prev
-        self.next = next
-
-    def __str__(self):
-        return f"{self.value}"
-
-    def __repr__(self):
-        return f"Node({self.value}, {self.next})"
-
-    def reset(self):
-        self.prev = None
-        self.next = None
-
-    def connect(self, other):
-        self.next = other
-        other.prev = self
-
-
 class Queue:
     def __init__(self):
         self.head = Node("HEAD", prev=None)
@@ -27,7 +6,7 @@ class Queue:
         self.__length = 0
 
     def __len__(self):
-        return len(self._data)
+        return self.__length
 
     def __str__(self):
         content = self.head.next
