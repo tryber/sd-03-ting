@@ -4,7 +4,22 @@ from ting_file_management.file_management import txt_importer
 
 
 # Implementa arquivo no fila
-@cache
+def process(path_file, instance):
+    for element in range(len(instance)):
+        if instance.search(element)["nome_do_arquivo"] == path_file:
+            return
+
+    linhas_do_arquivo = txt_importer(path_file)
+    new_entry = {
+        "nome_do_arquivo": path_file,
+        "qtd_linhas": len(linhas_do_arquivo),
+        "linhas_do_arquivo": linhas_do_arquivo,
+    }
+
+    instance.enqueue(new_entry)
+    instance.last_element()
+
+
 def remove(instance):
     if instance.__len__() > 0:
         file = instance.dequeue()
@@ -13,18 +28,6 @@ def remove(instance):
         )
     else:
         print("Não há elementos")
-
-
-def process(path_file, instance):
-    values = txt_importer(path_file)
-    processed_data = {
-        "nome_do_arquivo": path_file,
-        "qtd_linhas": len(values),
-        "linhas_do_arquivo": values,
-    }
-    instance.enqueue(processed_data)
-    print(processed_data, file=sys.stdout)
-    return processed_data
 
 
 def file_metadata(instance, position):
