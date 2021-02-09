@@ -1,9 +1,4 @@
-# from .content_deque import Deque
 from operator import itemgetter
-# sys.path.insert(1, '../ting_file_management')
-# from file_process import process
-# from file_management import txt_importer
-# from queue import Queue
 
 
 def phrase_to_words(phrase):
@@ -70,8 +65,3 @@ def search_by_word(word, instance):
         })
 
     return result
-
-# if __name__ == "__main__":
-#     instance = Queue()
-#     process("../statics/arquivo_teste.txt", instance)
-#     exists_word("é", instance)
