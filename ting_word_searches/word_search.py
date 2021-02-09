@@ -21,19 +21,19 @@ def exists_word(word, instance):
             "linhas_do_arquivo"
         )(process_metada)
 
-        words = [
+        match_ocurrences = [
             {"linha": index + 1}
             for index, phrase in enumerate(phrases)
             if str(word).lower() in phrase_to_words(phrase)
         ]
 
-        if len(words) == 0:
+        if len(match_ocurrences) == 0:
             break
 
         result.append({
             "palavra": word,
             "arquivo": file_path,
-            "ocorrencias": [*words]
+            "ocorrencias": [*match_ocurrences]
         })
 
     return result
@@ -49,19 +49,19 @@ def search_by_word(word, instance):
             "linhas_do_arquivo"
         )(process_metada)
 
-        words = [
+        match_ocurrences = [
             {"linha": index + 1, "conteudo": phrase}
             for index, phrase in enumerate(phrases)
             if word in phrase_to_words(phrase)
         ]
 
-        if len(words) == 0:
+        if len(match_ocurrences) == 0:
             break
 
         result.append({
             "palavra": word,
             "arquivo": file_path,
-            "ocorrencias": [*words]
+            "ocorrencias": [*match_ocurrences]
         })
 
     return result
