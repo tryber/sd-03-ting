@@ -1,6 +1,6 @@
-import sys
 from functools import cache
 from ting_file_management.file_management import txt_importer
+import sys
 
 
 # Implementa arquivo no fila
@@ -29,6 +29,7 @@ def remove(instance):
 
 def file_metadata(instance, position):
     try:
-        print(instance.search(position))
+        retorno = instance.search(position)
+        sys.stdout.write(str(retorno))
     except IndexError:
         sys.stderr.write('Posição inválida')
