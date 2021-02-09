@@ -15,7 +15,7 @@ def exists_word(word, instance):
     result = list()
     for i in range(len(instance)):
         process_metada = instance.search(i)
-        file_path, lines_qty, data = itemgetter(
+        file_path, lines_qty, phrases = itemgetter(
             "nome_do_arquivo",
             "qtd_linhas",
             "linhas_do_arquivo"
@@ -23,7 +23,7 @@ def exists_word(word, instance):
 
         words = [
             {"linha": index + 1}
-            for index, phrase in enumerate(data)
+            for index, phrase in enumerate(phrases)
             if str(word).lower() in phrase_to_words(phrase)
         ]
 
@@ -43,7 +43,7 @@ def search_by_word(word, instance):
     result = list()
     for i in range(len(instance)):
         process_metada = instance.search(i)
-        file_path, lines_qty, data = itemgetter(
+        file_path, lines_qty, phrases = itemgetter(
             "nome_do_arquivo",
             "qtd_linhas",
             "linhas_do_arquivo"
@@ -51,7 +51,7 @@ def search_by_word(word, instance):
 
         words = [
             {"linha": index + 1, "conteudo": phrase}
-            for index, phrase in enumerate(data)
+            for index, phrase in enumerate(phrases)
             if word in phrase_to_words(phrase)
         ]
 
