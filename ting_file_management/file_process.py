@@ -8,11 +8,10 @@ def process(path_file, instance):
     processed_file = txt_importer(path_file)
 
     for i in range(len(instance)):
-        if instance.search(i):
-            item = instance.search(i)
-            item = item["nome_do_arquivo"]
-            if item and item == path_file:
-                return None
+        item = instance.search(i)
+        item = item["nome_do_arquivo"]
+        if item == path_file:
+            return None
 
     instance.enqueue({
         "nome_do_arquivo": path_file,
@@ -40,6 +39,7 @@ def remove(instance):
             item = item["nome_do_arquivo"]
             if item == path_file:
                 del item
+
         sys.stdout.write(f"Arquivo {path_file} removido com sucesso\n")
     except IndexError:
         sys.stdout.write("Não há elementos\n")
