@@ -27,7 +27,7 @@ class Queue:
             return None
 
         remove = self.head.next
-        self.head.connect(to_remove.next)
+        self.head.connect(remove.next)
         remove.reset()
         self.__length -= 1
         return remove.value
