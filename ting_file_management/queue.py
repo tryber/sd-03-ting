@@ -44,32 +44,28 @@ class Queue:
         self.tail.prev = node
         self.__length += 1
 
+    def search(self, index):
+        if index >= self.__length or index < 0:
+            raise IndexError
+        current = self.head.next
+        while current != self.tail and index > 0:
+            current = current.next
+            index -= 1
+        return current.value
+
     def dequeue(self):
         if len(self) == 0:
             return None
-
         to_remove = self.head.next
         self.head.connect(to_remove.next)
         to_remove.reset()
         self.__length -= 1
         return to_remove.value
 
-    def search(self, index):
-        if index >= self.__length or index < 0:
-            raise IndexError
-
-        current = self.head.next
-        while current != self.tail and index > 0:
-            current = current.next
-            index -= 1
-
-        return current.value
-
 
 if __name__ == "__main__":
-    instance = Queue()
-    instance.enqueue(42)
-    instance.enqueue(43)
-    instance.enqueue(44)
-    value = instance.search(0)
-    print(instance, value)
+    flag = Queue()
+    flag.enqueue(42)
+    flag.enqueue(43)
+    flag.enqueue(44)
+    value = flag.search(0)
