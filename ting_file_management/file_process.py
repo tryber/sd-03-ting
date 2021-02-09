@@ -1,5 +1,4 @@
 import sys
-from functools import cache
 from ting_file_management.file_management import txt_importer
 
 
