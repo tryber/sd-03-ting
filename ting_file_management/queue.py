@@ -4,11 +4,11 @@ class Node:
         self.prev = prev
         self.next = next
 
-    def __repr__(self):
-        return f"Node({self.value}, {self.next})"
-
     def __str__(self):
         return f"{self.value}"
+
+    def __repr__(self):
+        return f"Node({self.value}, {self.next})"
 
     def reset(self):
         self.prev = None
@@ -30,12 +30,11 @@ class Queue:
         return self.__length
 
     def __str__(self):
-        current = self.head.next
-        message = f"[{current}"
-        while current is not self.tail:
-            message += f", {current.value}"
-            current = current.next
-
+        content = self.head.next
+        message = f"[{content}"
+        while content is not self.tail:
+            message += f", {content.value}"
+            content = content.next
         return f"{message}]"
 
     def enqueue(self, value):
@@ -64,8 +63,12 @@ class Queue:
 
 
 if __name__ == "__main__":
-    flag = Queue()
-    flag.enqueue(42)
-    flag.enqueue(43)
-    flag.enqueue(44)
-    value = flag.search(0)
+    fila = Queue()
+    fila.enqueue(42)
+    fila.enqueue(43)
+    fila.enqueue(44)
+    value = fila.search(0)
+    print(fila.data)
+    print(fila.search(0))
+    print(fila.search(1))
+    print(fila.search(2))
