@@ -20,7 +20,6 @@ def process(path_file, instance):
 def remove(instance):
     if not len(instance):
         sys.stdout.write('Não há elementos\n')
-    news = instance.dequeue()
     name_file = instance.dequeue()['nome_do_arquivo']
     print(f'Arquivo {name_file} removido com sucesso')
 
