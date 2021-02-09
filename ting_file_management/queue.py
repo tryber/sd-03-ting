@@ -44,10 +44,13 @@ class Queue:
         self.__length += 1
 
     def search(self, index):
-        print(self._data[index])
-        if 0 <= index <= len(self._data):
-            return self._data[index]
-        raise IndexError()
+        if index >= self.__length or index < 0:
+            raise IndexError
+        valueCurrent = self.head.next
+        while valueCurrent != self.tail and index > 0:
+            valueCurrent = valueCurrent.next
+            index -= 1
+        return valueCurrent.value
 
     def dequeue(self):
         if len(self) == 0:
