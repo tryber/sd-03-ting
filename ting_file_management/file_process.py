@@ -1,5 +1,5 @@
-from file_management import txt_importer
-from queue import Queue
+from .file_management import txt_importer
+from .queue import Queue
 import sys
 from operator import itemgetter
 
