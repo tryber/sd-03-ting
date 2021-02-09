@@ -6,19 +6,16 @@ from ting_file_management.file_management import txt_importer
 # Implementa arquivo no fila
 @cache
 def process(path_file, instance):
-    for element in range(len(instance)):
-        if instance.search(element)["nome_do_arquivo"] == path_file:
-            return
+    value = txt_importer(path_file)
 
-    linhas_do_arquivo = txt_importer(path_file)
-    new_entry = {
+    processed_data = {
         "nome_do_arquivo": path_file,
-        "qtd_linhas": len(linhas_do_arquivo),
-        "linhas_do_arquivo": linhas_do_arquivo,
+        "qtd_linhas": len(value),
+        "linhas_do_arquivo": value,
     }
-
-    instance.enqueue(new_entry)
-    instance.last_element()
+    print(processed_data, file=sys.stdout)
+    instance.enqueue(processed_data)
+    return processed_data
 
 
 def remove(instance):
