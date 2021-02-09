@@ -23,7 +23,6 @@ class Queue:
         self.tail.prev = node
         self.__length += 1
 
-
     def search(self, index):
         if index >= self.__length or index < 0:
             raise IndexError
@@ -32,7 +31,6 @@ class Queue:
             current = current.next
             index -= 1
         return current.value
-
 
     def dequeue(self):
         if len(self) == 0:
