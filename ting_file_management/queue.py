@@ -13,7 +13,8 @@ class Queue:
     def dequeue(self):
         if self._data:
             return self._data.pop(self.FIRST_ELEMENT)
-        return None
+        else:
+            raise IndexError
 
     def search(self, index):
         if(index > len(self._data) or index < 0):

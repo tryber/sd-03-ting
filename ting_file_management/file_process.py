@@ -18,8 +18,19 @@ def process(path_file, instance):
 
 
 def remove(instance):
-    """Aqui irá sua implementação"""
+    if (instance.__len__() == 0):
+        return print('Não há elementos', file=sys.stdout)
+    file_name = instance.search(0)['nome_do_arquivo']
+    instance.dequeue()
+    return print(f'Arquivo {file_name} removido com sucesso', file=sys.stdout)
 
 
 def file_metadata(instance, position):
-    """Aqui irá sua implementação"""
+    try:
+        text = instance.search(position)
+        return print(
+            text,
+            file=sys.stdout)
+
+    except IndexError:
+        print("Posição inválida", file=sys.stderr)
