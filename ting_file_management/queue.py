@@ -9,7 +9,6 @@ class Queue:
         self.queue.append(value)
         return self.queue
 
-
     def dequeue(self):
         [first, *rest] = self.queue
         self.queue = rest

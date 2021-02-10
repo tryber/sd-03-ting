@@ -8,5 +8,4 @@ def txt_importer(path_file):
     if not path.exists(path_file):
         return print(f"Arquivo {path_file} não encontrado", file=sys.stderr)
     with open(path_file, "r") as file:
-       return [line.replace("\n","") for line in file]
-
+        return [line.replace("\n", "") for line in file]

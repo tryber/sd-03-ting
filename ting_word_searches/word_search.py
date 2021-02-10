@@ -1,6 +1,6 @@
 import re
 
-    
+
 def exists_word(word, instance):
     ocorrences = []
     return_list = []

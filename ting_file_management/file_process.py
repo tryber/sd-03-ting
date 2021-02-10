@@ -1,6 +1,7 @@
 from ting_file_management.file_management import txt_importer
 import sys
 
+
 def file_already_exist(path_file, instance):
     for i in range(len(instance)):
         if instance.search(i)["nome_do_arquivo"] == path_file:
@@ -25,7 +26,7 @@ def process(path_file, instance):
 def remove(instance):
     if len(instance) <= 0:
         return print("Não há elementos")
-    
+
     queue = instance.dequeue()
     print(f"Arquivo {queue['nome_do_arquivo']} removido com sucesso")
 
