@@ -1,18 +1,18 @@
-from os import path
+import sys
+
 
 def txt_importer(path_file):
     """Aqui irá sua implementação"""
     try:
-        if not path.exists(path_file):
-            print("Formato inválido")
+        if not path_file.endswith(".txt"):
+            print("Formato inválido", file=sys.stderr)
 
         with open(path_file, "r") as file:
-            text_data = []
+            file_content = []
             text_lines = file.readlines()
 
             for line in text_lines:
-                text_data.append(line.strip())
-            return text_data
-
+                file_content.append(line.strip())
+            return file_content
     except FileNotFoundError:
-        print(f"Arquivo {path_file} não encontrado")
+        print(f"Arquivo {path_file} não encontrado", file=sys.stderr)
