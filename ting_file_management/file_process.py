@@ -22,15 +22,16 @@ def remove(instance):
     """Aqui irá sua implementação"""
     if not instance or instance.__len__() == 0:
         print('Não há elementos', file=sys.stdout)
-    file_data = instance.search(0)["nome_do_arquivo"]
-    instance.dequeue()
-    print(f"Arquivo {file_data} removido com sucesso", file=sys.stdout)
+    else: 
+        file_data = instance.search(0)["nome_do_arquivo"]
+        instance.dequeue()
+        print(f"Arquivo {file_data} removido com sucesso", file=sys.stdout)
 
 
 def file_metadata(instance, position):
     """Aqui irá sua implementação"""
     try:
-        metadata = instance.search(position)
-        print(metadata, file=sys.stdout)
+        data = instance.search(position)
+        print(data)
     except IndexError:
         print("Posição inválida", file=sys.stderr)
