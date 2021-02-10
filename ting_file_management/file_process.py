@@ -22,7 +22,7 @@ def remove(instance):
     """Aqui irá sua implementação"""
     if not instance or instance.__len__() == 0:
         print('Não há elementos', file=sys.stdout)
-    else: 
+    else:
         file_data = instance.search(0)["nome_do_arquivo"]
         instance.dequeue()
         print(f"Arquivo {file_data} removido com sucesso", file=sys.stdout)
