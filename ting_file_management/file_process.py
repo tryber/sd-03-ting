@@ -7,13 +7,13 @@ def process(path_file, instance):
     for item in range(len(instance)):
         if instance.search(item)["nome_do_arquivo"] == path_file:
             return
-        
+
     data = {
         "nome_do_arquivo": path_file,
         "qtd_linhas": len(txt_importer(path_file)),
         "linhas_do_arquivo": txt_importer(path_file)
     }
-    
+
     instance.enqueue(data)
     print(data)
 
